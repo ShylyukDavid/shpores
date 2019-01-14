@@ -1,0 +1,97 @@
+BankAccount operator+ (const BankAccount&) const;//збільшення кількості грошей на рахунку
+   BankAccount operator- (const BankAccount&) const;//зменшення кількості грошей на рахунку
+   
+   BankAccount BankAccount::operator+ (const BankAccount& bank_acc2) const
+{
+	return BankAccount(login, password, moneyBalance + bank_acc2.moneyBalance);
+}
+//зменшення кількості грошей на рахунку
+BankAccount BankAccount::operator- (const BankAccount& bank_acc2) const
+{
+	return BankAccount(login, password, moneyBalance - bank_acc2.moneyBalance);
+}
+------------------------------------------------------------------------------------------------
+  BankCard& operator= (const BankCard&);//блокування та заміна картки на нову
+  BankCard& BankCard::operator = (const BankCard& new_BankCard)
+{
+	if (this != &new_BankCard)
+	{
+		number = new_BankCard.number;
+		pin = new_BankCard.pin;
+	}
+	else
+	{
+		cout << "Самприсвоєння" << endl;
+	}
+	return *this;
+}
+-------------------------------------------------------------------------------------------------------
+	Zhek& operator+=(const Zhek&);
+	Zhek operator++();// zbilshennya kom platezhiv na 10
+	Zhek operator--();// zmenshennya kom platezhiv na 10
+  
+  Zhek& Zhek::operator+=(const Zhek& zhek)
+{
+	this->numOfApartments += zhek.numOfApartments;
+	this->comunalka += zhek.comunalka;
+	this->sluzhba = this->sluzhba;
+	this->owner = this->owner;
+	return *this;
+}
+Zhek Zhek::operator++()
+{
+	this->numOfApartments = this->numOfApartments;
+	this->comunalka += 10;
+	this->sluzhba = this->sluzhba;
+	this->owner = this->owner;
+	return *this;
+}
+Zhek Zhek::operator--()
+{
+	this->numOfApartments = this->numOfApartments;
+	this->comunalka -= 10;
+	this->sluzhba = this->sluzhba;
+	this->owner = this->owner;
+	return *this;
+}
+--------------------------------------------------------------
+
+   bool operator != (abiturient &a)
+   {
+	   return(this->name != a.name || this->surname != a.surname || this->mark != a.mark) ? (true) : (false);
+   }
+   bool operator == (abiturient &a)
+   {
+	   return(this->name == a.name || this->surname == a.surname || this->mark == a.mark) ? (true) : (false);
+   }
+
+   int operator +(const abiturient &a)
+   {
+	   int temp;
+	   temp = mark + a.mark;
+	   return temp;
+   }
+   -------------------------------------------------------------
+      Studrada& Studrada::operator =(const Studrada& s);
+   Studrada& Studrada::operator ++();
+   Studrada& Studrada::operator =(const Studrada& s)
+{
+	if (this != &s)
+	{
+		cout << "\nOverload '=' " << endl;
+		num_of_mem = s.num_of_mem;
+		university = s.university;
+	}
+	else
+	{
+		cout << "wants to = itself";
+		return *this;
+	}
+}
+
+Studrada& Studrada::operator ++()
+{
+	num_of_mem += 1;
+	return *this;
+}
+---------------------------------------------------------------
